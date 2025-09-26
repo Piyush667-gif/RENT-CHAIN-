@@ -1,0 +1,306 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #2563eb, #10b981, #3b82f6, #06d6a0);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .blockchain-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(37, 99, 235, 0.6);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+
+        .chain-link {
+            animation: chainGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes chainGlow {
+            from { filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.8)); }
+        }
+
+        .wavy-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .wavy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .wavy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .wavy-btn:hover::before {
+            left: 100%;
+        }
+
+        .property-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .chat-bubble {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .verification-badge {
+            background: linear-gradient(135deg, #10b981, #06d6a0);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #2563eb;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification-slide {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .dark-mode {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e293b);
+            background-size: 400% 400%;
+            animation: darkGradientShift 20s ease infinite;
+            color: #e2e8f0;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes darkGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .dark-mode .animated-bg {
+            background: linear-gradient(-45deg, #1e293b, #334155, #475569, #334155);
+            background-size: 400% 400%;
+            animation: darkGradientShift 15s ease infinite;
+        }
+
+        .dark-mode .particle {
+            background: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+
+        .dark-mode .property-card {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-color: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .property-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .dark-mode #navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .dark-mode .nav-link {
+            color: #e2e8f0;
+        }
+
+        .dark-mode .nav-link:hover {
+            color: #10b981;
+        }
+
+        .dark-mode .bg-white {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            color: #e2e8f0;
+        }
+
+        .dark-mode .bg-gray-50 {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e293b) !important;
+            background-size: 400% 400%;
+            animation: darkGradientShift 20s ease infinite;
+        }
+
+        .dark-mode .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode .text-gray-700 {
+            color: #cbd5e1 !important;
+        }
+
+        .dark-mode .text-gray-600 {
+            color: #94a3b8 !important;
+        }
+
+        .dark-mode .border-gray-300 {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode input, .dark-mode select, .dark-mode textarea {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode input:focus, .dark-mode select:focus, .dark-mode textarea:focus {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+        }
+
+        .dark-mode input::placeholder, .dark-mode textarea::placeholder {
+            color: #64748b !important;
+        }
+
+        .dark-mode .bg-gray-100 {
+            background: rgba(30, 41, 59, 0.6) !important;
+        }
+
+        .dark-mode .bg-gray-200 {
+            background: rgba(51, 65, 85, 0.6) !important;
+        }
+
+        .dark-mode .border-gray-200 {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode .hover\\:bg-gray-50:hover {
+            background: rgba(30, 41, 59, 0.8) !important;
+        }
+
+        .dark-mode .hover\\:bg-gray-200:hover {
+            background: rgba(51, 65, 85, 0.8) !important;
+        }
+
+        .dark-mode #chatWindow {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .dark-mode #notificationDropdown {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .dark-mode .border-t {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode .border-b {
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode .user-type-btn {
+            background: linear-gradient(135deg, #1e293b, #334155) !important;
+            border-color: rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode .user-type-btn:hover {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2) !important;
+        }
+
+        .dark-mode .border-dashed {
+            border-color: rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .dark-mode .hover\\:border-chain-blue:hover {
+            border-color: #10b981 !important;
+        }
+
+        .dark-mode-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .dark-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(16, 185, 129, 0.7);
+            border-radius: 50%;
+            animation: darkFloat 25s infinite linear;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+        }
+
+        @keyframes darkFloat {
+            0% { transform: translateY(100vh) translateX(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(150px) rotate(360deg); opacity: 0; }
+        }
