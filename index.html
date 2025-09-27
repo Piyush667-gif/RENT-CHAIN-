@@ -1,901 +1,928 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentChain - Blockchain-Powered Property Platform</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'chain-blue': '#2563eb',
-                        'chain-green': '#10b981',
-                        'chain-dark': '#1e293b',
-                    }
-                }
-            }
-        }
-    </script>
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentChain - Blockchain-Powered Property Platform</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+'chain-blue': '#2563eb',
+'chain-green': '#10b981',
+'chain-dark': '#1e293b',
+}
+}
+}
+}
+</script>
+
 </head>
 <body class="bg-gray-50 transition-all duration-300">
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center animated-bg">
-        <div class="text-center">
-            <div class="chain-link mb-4">
-                <svg width="80" height="80" viewBox="0 0 80 80" class="mx-auto">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#FFFF00"/>
-                            <stop offset="100%" style="stop-color:#10b981"/>
-                        </linearGradient>
-                    </defs>
-                    <!-- House -->
-                    <path d="M40 15 L25 25 L25 35 L55 35 L55 25 Z" fill="url(#logoGradient)"/>
-                    <rect x="30" y="35" width="20" height="20" fill="url(#logoGradient)"/>
-                    <rect x="35" y="40" width="4" height="8" fill="white"/>
-                    <rect x="42" y="40" width="4" height="4" fill="white"/>
-                    <!-- Money symbol -->
-                    <circle cx="20" cy="45" r="8" fill="url(#logoGradient)"/>
-                    <text x="20" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">$</text>
-                    <!-- Chain links -->
-                    <ellipse cx="60" cy="40" rx="4" ry="6" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
-                    <ellipse cx="60" cy="50" rx="4" ry="6" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
-                </svg>
-            </div>
-            <h1 class="text-3xl font-bold text-white mb-2">RentChain</h1>
-            <p class="text-white/80">Blockchain-Powered Property Platform</p>
-            <div class="loading-spinner mx-auto mt-4"></div>
-        </div>
-    </div>
+<!-- Loading Screen -->
+<div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center animated-bg">
+<div class="text-center">
+<div class="chain-link mb-4">
+<svg width="80" height="80" viewBox="0 0 80 80" class="mx-auto">
+<defs>
+<linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2563eb"/>
+<stop offset="100%" style="stop-color:#10b981"/>
+</linearGradient>
+</defs>
+<!-- House -->
+<path d="M40 15 L25 25 L25 35 L55 35 L55 25 Z" fill="url(#logoGradient)"/>
+<rect x="30" y="35" width="20" height="20" fill="url(#logoGradient)"/>
+<rect x="35" y="40" width="4" height="8" fill="white"/>
+<rect x="42" y="40" width="4" height="4" fill="white"/>
+<!-- Money symbol -->
+<circle cx="20" cy="45" r="8" fill="url(#logoGradient)"/>
+<text x="20" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">$</text>
+<!-- Chain links -->
+<ellipse cx="60" cy="40" rx="4" ry="6" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
+<ellipse cx="60" cy="50" rx="4" ry="6" fill="none" stroke="url(#logoGradient)" stroke-width="2"/>
+</svg>
+</div>
+<h1 class="text-3xl font-bold text-white mb-2">RentChain</h1>
+<p class="text-white/80">Blockchain-Powered Property Platform</p>
+<div class="loading-spinner mx-auto mt-4"></div>
+</div>
+</div>
 
-    <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-sm shadow-lg fixed w-full z-40 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <svg width="40" height="40" viewBox="0 0 40 40">
-                        <defs>
-                            <linearGradient id="navLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FFFF00"/>
-                                <stop offset="100%" style="stop-color:#10b981"/>
-                            </linearGradient>
-                        </defs>
-                        <!-- House -->
-                        <path d="M20 7.5 L12.5 12.5 L12.5 17.5 L27.5 17.5 L27.5 12.5 Z" fill="url(#navLogoGradient)"/>
-                        <rect x="15" y="17.5" width="10" height="10" fill="url(#navLogoGradient)"/>
-                        <rect x="17.5" y="20" width="2" height="4" fill="white"/>
-                        <rect x="21" y="20" width="2" height="2" fill="white"/>
-                        <!-- Money symbol -->
-                        <circle cx="10" cy="22.5" r="4" fill="url(#navLogoGradient)"/>
-                        <text x="10" y="25" text-anchor="middle" fill="white" font-size="5" font-weight="bold">$</text>
-                        <!-- Chain links -->
-                        <ellipse cx="30" cy="20" rx="2" ry="3" fill="none" stroke="url(#navLogoGradient)" stroke-width="1"/>
-                        <ellipse cx="30" cy="25" rx="2" ry="3" fill="none" stroke="url(#navLogoGradient)" stroke-width="1"/>
-                    </svg>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">RentChain</span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" onclick="showSection('home')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Home</a>
-                    <a href="#" onclick="showSection('properties')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Properties</a>
-                    <a href="#" onclick="showSection('agreements')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Agreements</a>
-                    <a href="#" onclick="showSection('verification')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Verification</a>
-                    <a href="#" onclick="showSection('dashboard')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Dashboard</a>
-                </div>
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg fixed w-full z-40 transition-all duration-300" id="navbar">
+<div class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<svg width="40" height="40" viewBox="0 0 40 40">
+<defs>
+<linearGradient id="navLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2563eb"/>
+<stop offset="100%" style="stop-color:#10b981"/>
+</linearGradient>
+</defs>
+<!-- House -->
+<path d="M20 7.5 L12.5 12.5 L12.5 17.5 L27.5 17.5 L27.5 12.5 Z" fill="url(#navLogoGradient)"/>
+<rect x="15" y="17.5" width="10" height="10" fill="url(#navLogoGradient)"/>
+<rect x="17.5" y="20" width="2" height="4" fill="white"/>
+<rect x="21" y="20" width="2" height="2" fill="white"/>
+<!-- Money symbol -->
+<circle cx="10" cy="22.5" r="4" fill="url(#navLogoGradient)"/>
+<text x="10" y="25" text-anchor="middle" fill="white" font-size="5" font-weight="bold">$</text>
+<!-- Chain links -->
+<ellipse cx="30" cy="20" rx="2" ry="3" fill="none" stroke="url(#navLogoGradient)" stroke-width="1"/>
+<ellipse cx="30" cy="25" rx="2" ry="3" fill="none" stroke="url(#navLogoGradient)" stroke-width="1"/>
+</svg>
+<span class="text-2xl font-bold bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">RentChain</span>
+</div>
 
-                <div class="flex items-center space-x-4">
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-                        </svg>
-                    </button>
-                    <div class="relative">
-                        <button onclick="toggleNotifications()" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors relative">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
-                            </svg>
-                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-                        </button>
-                        <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border z-50">
-                            <div class="p-4 border-b">
-                                <h3 class="font-semibold text-gray-800">Notifications</h3>
-                            </div>
-                            <div class="max-h-64 overflow-y-auto">
-                                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
-                                    <p class="text-sm font-medium text-gray-800">Rent Due Tomorrow</p>
-                                    <p class="text-xs text-gray-600">Your rent for Apartment 3B is due tomorrow</p>
-                                </div>
-                                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
-                                    <p class="text-sm font-medium text-gray-800">New Property Match</p>
-                                    <p class="text-xs text-gray-600">Found 3 new properties matching your criteria</p>
-                                </div>
-                                <div class="p-4 hover:bg-gray-50 cursor-pointer">
-                                    <p class="text-sm font-medium text-gray-800">Agreement Signed</p>
-                                    <p class="text-xs text-gray-600">Your rental agreement has been successfully signed</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button onclick="showSection('auth')" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-6 py-2 rounded-lg font-medium">
-                        Sign In
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#" onclick="showSection('home')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Home</a>
+<a href="#" onclick="showSection('properties')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Properties</a>
+<a href="#" onclick="showSection('agreements')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Agreements</a>
+<a href="#" onclick="showSection('verification')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Verification</a>
+<a href="#" onclick="showSection('dashboard')" class="nav-link text-gray-700 hover:text-chain-blue transition-colors">Dashboard</a>
+</div>
 
-    <!-- Main Content -->
-    <main class="pt-20">
-        <!-- Home Section -->
-        <section id="home" class="section-content">
-            <!-- Hero Section -->
-            <div class="relative min-h-screen flex items-center justify-center animated-bg overflow-hidden">
-                <div class="blockchain-particles" id="lightParticles">
-                    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-                    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-                    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-                    <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
-                    <div class="particle" style="left: 50%; animation-delay: 8s;"></div>
-                    <div class="particle" style="left: 60%; animation-delay: 10s;"></div>
-                    <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
-                    <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
-                    <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
-                </div>
-                
-                <div class="dark-mode-particles hidden" id="darkParticles">
-                    <div class="dark-particle" style="left: 15%; animation-delay: 0s;"></div>
-                    <div class="dark-particle" style="left: 25%; animation-delay: 3s;"></div>
-                    <div class="dark-particle" style="left: 35%; animation-delay: 6s;"></div>
-                    <div class="dark-particle" style="left: 45%; animation-delay: 9s;"></div>
-                    <div class="dark-particle" style="left: 55%; animation-delay: 12s;"></div>
-                    <div class="dark-particle" style="left: 65%; animation-delay: 15s;"></div>
-                    <div class="dark-particle" style="left: 75%; animation-delay: 18s;"></div>
-                    <div class="dark-particle" style="left: 85%; animation-delay: 21s;"></div>
-                    <div class="dark-particle" style="left: 95%; animation-delay: 24s;"></div>
-                    <div class="dark-particle" style="left: 5%; animation-delay: 1s;"></div>
-                    <div class="dark-particle" style="left: 30%; animation-delay: 7s;"></div>
-                    <div class="dark-particle" style="left: 60%; animation-delay: 13s;"></div>
-                    <div class="dark-particle" style="left: 80%; animation-delay: 19s;"></div>
-                </div>
-                
-                <div class="relative z-10 text-center text-white px-6">
-                    <div class="chain-link mb-8">
-                        <svg width="120" height="120" viewBox="0 0 120 120" class="mx-auto">
-                            <defs>
-                                <linearGradient id="heroLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#FFFF00"/>
-                                    <stop offset="100%" style="stop-color:#10b981"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- House -->
-                            <path d="M60 22.5 L37.5 37.5 L37.5 52.5 L82.5 52.5 L82.5 37.5 Z" fill="url(#heroLogoGradient)"/>
-                            <rect x="45" y="52.5" width="30" height="30" fill="url(#heroLogoGradient)"/>
-                            <rect x="52.5" y="60" width="6" height="12" fill="white"/>
-                            <rect x="63" y="60" width="6" height="6" fill="white"/>
-                            <!-- Money symbol -->
-                            <circle cx="30" cy="67.5" r="12" fill="url(#heroLogoGradient)"/>
-                            <text x="30" y="75" text-anchor="middle" fill="white" font-size="15" font-weight="bold">$</text>
-                            <!-- Chain links -->
-                            <ellipse cx="90" cy="60" rx="6" ry="9" fill="none" stroke="url(#heroLogoGradient)" stroke-width="3"/>
-                            <ellipse cx="90" cy="75" rx="6" ry="9" fill="none" stroke="url(#heroLogoGradient)" stroke-width="3"/>
-                        </svg>
-                    </div>
-                    
-                    <h1 class="text-6xl md:text-7xl font-bold mb-6">RentChain</h1>
-                    <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">The future of property rental powered by blockchain technology. Secure, transparent, and efficient.</p>
-                    
-                    <!-- Search Bar -->
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <input type="text" placeholder="Location" class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:border-white/50">
-                            <input type="text" placeholder="Max Price" class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:border-white/50">
-                            <select class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/50">
-                                <option value="">Property Type</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="house">House</option>
-                                <option value="studio">Studio</option>
-                            </select>
-                            <button class="wavy-btn bg-white text-chain-blue px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                                Search Properties
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="showSection('auth')" class="wavy-btn bg-white text-chain-blue px-8 py-4 rounded-lg font-semibold text-lg">
-                            Join Us
-                        </button>
-                        <button onclick="showSection('properties')" class="wavy-btn border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-chain-blue transition-colors">
-                            Read More
-                        </button>
-                    </div>
-                </div>
-            </div>
+<div class="flex items-center space-x-4">
+<button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+</svg>
+</button>
+<div class="relative">
+<button onclick="toggleNotifications()" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors relative">
+<svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+<path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+</svg>
+<span id="notificationBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 hidden items-center justify-center">0</span>
+</button>
+<div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border z-50">
+<div class="p-4 border-b">
+<h3 class="font-semibold text-gray-800">Notifications</h3>
+</div>
+<div class="max-h-64 overflow-y-auto" id="notificationList"></div>
+<div id="notificationEmpty" class="p-4 text-sm text-gray-500">No notifications yet</div>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span id="userBadge" class="hidden text-sm text-gray-700"></span>
+<button id="signinNavBtn" onclick="showSection('auth')" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-6 py-2 rounded-lg font-medium">
+Sign In
+</button>
+<button id="signoutNavBtn" class="hidden border-2 border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:border-red-500 hover:text-red-600 transition-colors">
+Sign Out
+</button>
+</div>
+</div>
+</div>
+</div>
+</nav>
 
-            <!-- Quick Features Section -->
-            <div class="py-20 bg-white">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">How RentChain Works</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
-                                <svg width="40" height="40" fill="white" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Verify Identity</h3>
-                            <p class="text-gray-600">Complete secure blockchain-based identity verification with government ID and biometric authentication.</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
-                                <svg width="40" height="40" fill="white" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 0a1 1 0 100 2h.01a1 1 0 100-2H9zm2 0a1 1 0 100 2h.01a1 1 0 100-2H11z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Sign Smart Contract</h3>
-                            <p class="text-gray-600">Create and sign legally binding smart contracts with automated rent collection and dispute resolution.</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
-                                <svg width="40" height="40" fill="white" viewBox="0 0 20 20">
-                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Move In Securely</h3>
-                            <p class="text-gray-600">Complete the move-in process with digital key exchange and automated security deposit handling.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Main Content -->
+<main class="pt-20">
+<!-- Home Section -->
+<section id="home" class="section-content">
+<!-- Hero Section -->
+<div class="relative min-h-screen flex items-center justify-center animated-bg overflow-hidden">
+<div class="blockchain-particles" id="lightParticles">
+<div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+<div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+<div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+<div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+<div class="particle" style="left: 50%; animation-delay: 8s;"></div>
+<div class="particle" style="left: 60%; animation-delay: 10s;"></div>
+<div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+<div class="particle" style="left: 80%; animation-delay: 14s;"></div>
+<div class="particle" style="left: 90%; animation-delay: 16s;"></div>
+</div>
 
-        <!-- Properties Section -->
-        <section id="properties" class="section-content hidden">
-            <div class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Available Properties</h2>
-                    
-                    <!-- Filters Panel -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
-                        <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-                            <input type="text" placeholder="Location" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
-                            <input type="text" placeholder="Max Price" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
-                            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
-                                <option value="">Type</option>
-                                <option value="rent">Rent</option>
-                                <option value="sale">Sale</option>
-                            </select>
-                            <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
-                                <option value="">Furnished</option>
-                                <option value="furnished">Furnished</option>
-                                <option value="unfurnished">Unfurnished</option>
-                            </select>
-                            <input type="text" placeholder="Amenities" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
-                            <button class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-6 py-2 rounded-lg font-medium">
-                                Filter
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Property Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                        <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative">
-                                <div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
-                                <div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
-                                    ✓ Verified
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2 text-gray-800">Modern Downtown Apartment</h3>
-                                <p class="text-gray-600 mb-4">2 bed • 2 bath • 1,200 sq ft</p>
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-2xl font-bold text-chain-blue">$2,500/mo</span>
-                                    <span class="text-sm text-gray-500">Furnished</span>
-                                </div>
-                                <button onclick="openChat('Modern Downtown Apartment')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
-                                    Enquire Now
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 relative">
-                                <div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
-                                <div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
-                                    ✓ Verified
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2 text-gray-800">Luxury Family House</h3>
-                                <p class="text-gray-600 mb-4">4 bed • 3 bath • 2,500 sq ft</p>
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-2xl font-bold text-chain-blue">$4,200/mo</span>
-                                    <span class="text-sm text-gray-500">Unfurnished</span>
-                                </div>
-                                <button onclick="openChat('Luxury Family House')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
-                                    Enquire Now
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 relative">
-                                <div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
-                                <div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
-                                    ✓ Verified
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2 text-gray-800">Cozy Studio Loft</h3>
-                                <p class="text-gray-600 mb-4">Studio • 1 bath • 600 sq ft</p>
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-2xl font-bold text-chain-blue">$1,800/mo</span>
-                                    <span class="text-sm text-gray-500">Furnished</span>
-                                </div>
-                                <button onclick="openChat('Cozy Studio Loft')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
-                                    Enquire Now
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Interactive Map Section -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Property Map</h3>
-                        <div class="h-96 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-                            <div class="text-center">
-                                <svg width="60" height="60" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-500">
-                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
-                                </svg>
-                                <p class="text-gray-600">Interactive map showing available properties with pins</p>
-                                <p class="text-sm text-gray-500 mt-2">Hover over pins to see property previews</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="dark-mode-particles hidden" id="darkParticles">
+<div class="dark-particle" style="left: 15%; animation-delay: 0s;"></div>
+<div class="dark-particle" style="left: 25%; animation-delay: 3s;"></div>
+<div class="dark-particle" style="left: 35%; animation-delay: 6s;"></div>
+<div class="dark-particle" style="left: 45%; animation-delay: 9s;"></div>
+<div class="dark-particle" style="left: 55%; animation-delay: 12s;"></div>
+<div class="dark-particle" style="left: 65%; animation-delay: 15s;"></div>
+<div class="dark-particle" style="left: 75%; animation-delay: 18s;"></div>
+<div class="dark-particle" style="left: 85%; animation-delay: 21s;"></div>
+<div class="dark-particle" style="left: 95%; animation-delay: 24s;"></div>
+<div class="dark-particle" style="left: 5%; animation-delay: 1s;"></div>
+<div class="dark-particle" style="left: 30%; animation-delay: 7s;"></div>
+<div class="dark-particle" style="left: 60%; animation-delay: 13s;"></div>
+<div class="dark-particle" style="left: 80%; animation-delay: 19s;"></div>
+</div>
 
-        <!-- Verification Section -->
-        <section id="verification" class="section-content hidden">
-            <div class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Identity Verification</h2>
-                    
-                    <div class="max-w-4xl mx-auto">
-                        <!-- User Type Selection -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Select Your Role</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <button onclick="selectUserType('tenant')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
-                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
-                                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                            <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-lg font-semibold mb-2">Tenant</h4>
-                                    <p class="text-gray-600 text-sm">Looking for a place to rent</p>
-                                </button>
-                                
-                                <button onclick="selectUserType('landlord')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
-                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
-                                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-lg font-semibold mb-2">Landlord</h4>
-                                    <p class="text-gray-600 text-sm">Property owner or manager</p>
-                                </button>
-                                
-                                <button onclick="selectUserType('buyer')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
-                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
-                                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-lg font-semibold mb-2">Buyer/Seller</h4>
-                                    <p class="text-gray-600 text-sm">Buying or selling property</p>
-                                </button>
-                            </div>
-                        </div>
+<div class="relative z-10 text-center text-white px-6">
+<div class="chain-link mb-8">
+<svg width="120" height="120" viewBox="0 0 120 120" class="mx-auto">
+<defs>
+<linearGradient id="heroLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#ffffff"/>
+<stop offset="100%" style="stop-color:#e2e8f0"/>
+</linearGradient>
+</defs>
+<!-- House -->
+<path d="M60 22.5 L37.5 37.5 L37.5 52.5 L82.5 52.5 L82.5 37.5 Z" fill="url(#heroLogoGradient)"/>
+<rect x="45" y="52.5" width="30" height="30" fill="url(#heroLogoGradient)"/>
+<rect x="52.5" y="60" width="6" height="12" fill="white"/>
+<rect x="63" y="60" width="6" height="6" fill="white"/>
+<!-- Money symbol -->
+<circle cx="30" cy="67.5" r="12" fill="url(#heroLogoGradient)"/>
+<text x="30" y="75" text-anchor="middle" fill="white" font-size="15" font-weight="bold">$</text>
+<!-- Chain links -->
+<ellipse cx="90" cy="60" rx="6" ry="9" fill="none" stroke="url(#heroLogoGradient)" stroke-width="3"/>
+<ellipse cx="90" cy="75" rx="6" ry="9" fill="none" stroke="url(#heroLogoGradient)" stroke-width="3"/>
+</svg>
+</div>
 
-                        <!-- Verification Steps -->
-                        <div id="verificationSteps" class="hidden">
-                            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                                <div class="flex items-center mb-8">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="w-8 h-8 bg-chain-blue text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
-                                        <span class="text-gray-400">→</span>
-                                        <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">2</div>
-                                        <span class="text-gray-400">→</span>
-                                        <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
-                                    </div>
-                                </div>
+<h1 class="text-6xl md:text-7xl font-bold mb-6">RentChain</h1>
+<p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">The future of property rental powered by blockchain technology. Secure, transparent, and efficient.</p>
 
-                                <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 1: Personal Information</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <input type="text" placeholder="Full Name" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                    <input type="email" placeholder="Email Address" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                    <input type="tel" placeholder="Phone Number" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                    <input type="date" placeholder="Date of Birth" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                </div>
-                                <textarea placeholder="Address" rows="3" class="w-full mt-4 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue"></textarea>
-                            </div>
+<!-- Search Bar -->
+<div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<input type="text" placeholder="Location" class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:border-white/50">
+<input type="text" placeholder="Max Price" class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:border-white/50">
+<select class="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/50">
+<option value="">Property Type</option>
+<option value="apartment">Apartment</option>
+<option value="house">House</option>
+<option value="studio">Studio</option>
+</select>
+<button class="wavy-btn bg-white text-chain-blue px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+Search Properties
+</button>
+</div>
+</div>
 
-                            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                                <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 2: Document Upload</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-chain-blue transition-colors cursor-pointer">
-                                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-400">
-                                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
-                                        </svg>
-                                        <p class="text-gray-600 mb-2">Government ID (Front)</p>
-                                        <p class="text-sm text-gray-500">Click to upload or drag and drop</p>
-                                    </div>
-                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-chain-blue transition-colors cursor-pointer">
-                                        <svg width="48" height="48" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-400">
-                                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
-                                        </svg>
-                                        <p class="text-gray-600 mb-2">Government ID (Back)</p>
-                                        <p class="text-sm text-gray-500">Click to upload or drag and drop</p>
-                                    </div>
-                                </div>
-                            </div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button onclick="showSection('auth')" class="wavy-btn bg-white text-chain-blue px-8 py-4 rounded-lg font-semibold text-lg">
+Join Us
+</button>
+<button onclick="showSection('properties')" class="wavy-btn border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-chain-blue transition-colors">
+Read More
+</button>
+</div>
+</div>
+</div>
 
-                            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                                <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 3: Biometric Verification</h3>
-                                <div class="text-center">
-                                    <div class="w-32 h-32 mx-auto mb-6 border-4 border-chain-blue rounded-full flex items-center justify-center">
-                                        <svg width="64" height="64" fill="currentColor" viewBox="0 0 20 20" class="text-chain-blue">
-                                            <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-.257-.257A6 6 0 1118 8zM10 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm-5.657 2.343a1 1 0 011.414 0l1.414 1.414a1 1 0 11-1.414 1.414L4.343 5.757a1 1 0 010-1.414zM2 10a1 1 0 011-1h2a1 1 0 110 2H3a1 1 0 01-1-1zm2.343 5.657a1 1 0 010-1.414l1.414-1.414a1 1 0 111.414 1.414l-1.414 1.414a1 1 0 01-1.414 0z"/>
-                                        </svg>
-                                    </div>
-                                    <p class="text-gray-600 mb-4">Position your face in the circle and follow the instructions</p>
-                                    <button class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-8 py-3 rounded-lg font-medium">
-                                        Start Face Scan
-                                    </button>
-                                </div>
-                            </div>
+<!-- Quick Features Section -->
+<div class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">How RentChain Works</h2>
 
-                            <div class="text-center">
-                                <button onclick="submitVerification()" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-12 py-4 rounded-lg font-semibold text-lg">
-                                    Submit for Verification
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
+<svg width="40" height="40" fill="white" viewBox="0 0 20 20">
+<path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+<path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+</svg>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-800">Verify Identity</h3>
+<p class="text-gray-600">Complete secure blockchain-based identity verification with government ID and biometric authentication.</p>
+</div>
 
-        <!-- Agreements Section -->
-        <section id="agreements" class="section-content hidden">
-            <div class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Smart Contracts & Agreements</h2>
-                    
-                    <div class="max-w-4xl mx-auto">
-                        <!-- Progress Bar -->
-                        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-sm font-medium text-chain-blue">Agreement Progress</span>
-                                <span class="text-sm font-medium text-chain-blue">Step 2 of 4</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gradient-to-r from-chain-blue to-chain-green h-2 rounded-full" style="width: 50%"></div>
-                            </div>
-                        </div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
+<svg width="40" height="40" fill="white" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 0a1 1 0 100 2h.01a1 1 0 100-2H9zm2 0a1 1 0 100 2h.01a1 1 0 100-2H11z"/>
+</svg>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-800">Sign Smart Contract</h3>
+<p class="text-gray-600">Create and sign legally binding smart contracts with automated rent collection and dispute resolution.</p>
+</div>
 
-                        <!-- Step 1: Template Selection -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 1: Select Agreement Template</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div class="border-2 border-chain-blue bg-chain-blue/5 rounded-xl p-6 cursor-pointer">
-                                    <h4 class="text-lg font-semibold mb-2 text-chain-blue">Standard Rental</h4>
-                                    <p class="text-gray-600 text-sm mb-4">Basic rental agreement with standard terms</p>
-                                    <div class="text-xs text-gray-500">
-                                        <p>• Monthly rent payment</p>
-                                        <p>• Security deposit</p>
-                                        <p>• Basic maintenance terms</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-chain-blue transition-colors">
-                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Furnished Rental</h4>
-                                    <p class="text-gray-600 text-sm mb-4">Agreement for furnished properties</p>
-                                    <div class="text-xs text-gray-500">
-                                        <p>• Furniture inventory</p>
-                                        <p>• Damage protection</p>
-                                        <p>• Utility inclusions</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-chain-blue transition-colors">
-                                    <h4 class="text-lg font-semibold mb-2 text-gray-800">Commercial Lease</h4>
-                                    <p class="text-gray-600 text-sm mb-4">Business property agreements</p>
-                                    <div class="text-xs text-gray-500">
-                                        <p>• Commercial terms</p>
-                                        <p>• Business use clauses</p>
-                                        <p>• Extended duration</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
+<svg width="40" height="40" fill="white" viewBox="0 0 20 20">
+<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+</svg>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-gray-800">Move In Securely</h3>
+<p class="text-gray-600">Complete the move-in process with digital key exchange and automated security deposit handling.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-                        <!-- Step 2: Customize Terms -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 2: Customize Agreement Terms</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Monthly Rent</label>
-                                    <input type="text" value="$2,500" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Security Deposit</label>
-                                    <input type="text" value="$2,500" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Lease Duration</label>
-                                    <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                        <option>12 months</option>
-                                        <option>6 months</option>
-                                        <option>24 months</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
-                                    <input type="date" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
-                                </div>
-                            </div>
-                            
-                            <div class="mt-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Additional Terms</label>
-                                <textarea rows="4" placeholder="Add any special conditions or terms..." class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue"></textarea>
-                            </div>
-                        </div>
+<!-- Properties Section -->
+<section id="properties" class="section-content hidden">
+<div class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Available Properties</h2>
 
-                        <!-- Step 3: Review Agreement -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 3: Review Agreement</h3>
-                            <div class="bg-gray-50 rounded-lg p-6 mb-6">
-                                <h4 class="font-semibold mb-4 text-gray-800">Agreement Summary</h4>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Property:</span>
-                                        <span class="font-medium">Modern Downtown Apartment</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Monthly Rent:</span>
-                                        <span class="font-medium">$2,500</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Security Deposit:</span>
-                                        <span class="font-medium">$2,500</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Lease Duration:</span>
-                                        <span class="font-medium">12 months</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3 mb-6">
-                                <input type="checkbox" id="agreeTerms" class="w-4 h-4 text-chain-blue">
-                                <label for="agreeTerms" class="text-sm text-gray-700">I have read and agree to all terms and conditions</label>
-                            </div>
-                        </div>
+<!-- Filters Panel -->
+<div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+<input type="text" placeholder="Location" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
+<input type="text" placeholder="Max Price" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
+<select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
+<option value="">Type</option>
+<option value="rent">Rent</option>
+<option value="sale">Sale</option>
+</select>
+<select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
+<option value="">Furnished</option>
+<option value="furnished">Furnished</option>
+<option value="unfurnished">Unfurnished</option>
+</select>
+<input type="text" placeholder="Amenities" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-chain-blue">
+<button class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-6 py-2 rounded-lg font-medium">
+Filter
+</button>
+</div>
+</div>
 
-                        <!-- Step 4: Digital Signature -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Step 4: Digital Signature</h3>
-                            <div class="mb-6">
-                                <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
-                                    <svg width="48" height="48" fill="white" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                                    </svg>
-                                </div>
-                                <p class="text-gray-600">Click below to sign the agreement with blockchain verification</p>
-                            </div>
-                            <button onclick="signAgreement()" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-12 py-4 rounded-lg font-semibold text-lg">
-                                Sign Agreement
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Property Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+<div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
+<div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative">
+<div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
+<div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
+✓ Verified
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2 text-gray-800">Modern Downtown Apartment</h3>
+<p class="text-gray-600 mb-4">2 bed • 2 bath • 1,200 sq ft</p>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-bold text-chain-blue">$2,500/mo</span>
+<span class="text-sm text-gray-500">Furnished</span>
+</div>
+<button onclick="openChat('Modern Downtown Apartment')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
+Enquire Now
+</button>
+</div>
+</div>
 
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="section-content hidden">
-            <div class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Dashboard</h2>
-                    
-                    <!-- Dashboard Type Selector -->
-                    <div class="flex justify-center mb-8">
-                        <div class="bg-white rounded-lg p-1 shadow-lg">
-                            <button onclick="showDashboard('tenant')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors bg-chain-blue text-white">Tenant</button>
-                            <button onclick="showDashboard('landlord')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Landlord</button>
-                            <button onclick="showDashboard('buyer')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Buyer/Seller</button>
-                            <button onclick="showDashboard('admin')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Admin</button>
-                        </div>
-                    </div>
+<div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
+<div class="h-48 bg-gradient-to-br from-green-400 to-green-600 relative">
+<div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
+<div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
+✓ Verified
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2 text-gray-800">Luxury Family House</h3>
+<p class="text-gray-600 mb-4">4 bed • 3 bath • 2,500 sq ft</p>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-bold text-chain-blue">$4,200/mo</span>
+<span class="text-sm text-gray-500">Unfurnished</span>
+</div>
+<button onclick="openChat('Luxury Family House')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
+Enquire Now
+</button>
+</div>
+</div>
 
-                    <!-- Tenant Dashboard -->
-                    <div id="tenantDashboard" class="dashboard-content">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-gray-800">Active Rental</h3>
-                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-                                        <svg width="20" height="20" fill="white" viewBox="0 0 20 20">
-                                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-2xl font-bold text-gray-800">1</p>
-                                <p class="text-sm text-gray-600">Downtown Apartment</p>
-                            </div>
-                            
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-gray-800">Next Rent Due</h3>
-                                    <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
-                                        <svg width="20" height="20" fill="white" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-2xl font-bold text-gray-800">5 days</p>
-                                <p class="text-sm text-gray-600">$2,500 due Dec 1st</p>
-                            </div>
-                            
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-gray-800">Messages</h3>
-                                    <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
-                                        <svg width="20" height="20" fill="white" viewBox="0 0 20 20">
-                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-2xl font-bold text-gray-800">3</p>
-                                <p class="text-sm text-gray-600">Unread messages</p>
-                            </div>
-                            
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-gray-800">Lease Status</h3>
-                                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-                                        <svg width="20" height="20" fill="white" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 0a1 1 0 100 2h.01a1 1 0 100-2H9zm2 0a1 1 0 100 2h.01a1 1 0 100-2H11z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-2xl font-bold text-gray-800">Active</p>
-                                <p class="text-sm text-gray-600">8 months remaining</p>
-                            </div>
-                        </div>
+<div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden">
+<div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 relative">
+<div class="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">Property Image</div>
+<div class="absolute top-4 right-4 verification-badge text-white px-3 py-1 rounded-full text-sm font-medium">
+✓ Verified
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2 text-gray-800">Cozy Studio Loft</h3>
+<p class="text-gray-600 mb-4">Studio • 1 bath • 600 sq ft</p>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-bold text-chain-blue">$1,800/mo</span>
+<span class="text-sm text-gray-500">Furnished</span>
+</div>
+<button onclick="openChat('Cozy Studio Loft')" class="wavy-btn w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-2 rounded-lg font-medium">
+Enquire Now
+</button>
+</div>
+</div>
+</div>
 
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <h3 class="text-xl font-bold mb-6 text-gray-800">Recent Activity</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
-                                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                                            <svg width="16" height="16" fill="white" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-gray-800">Rent payment processed</p>
-                                            <p class="text-sm text-gray-600">November 2024 - $2,500</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
-                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                            <svg width="16" height="16" fill="white" viewBox="0 0 20 20">
-                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-gray-800">Message from landlord</p>
-                                            <p class="text-sm text-gray-600">Maintenance scheduled for next week</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!-- Interactive Map Section -->
+<div class="bg-white rounded-2xl shadow-lg p-6">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Property Map</h3>
+<div class="h-96 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
+<div class="text-center">
+<svg width="60" height="60" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-500">
+<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+</svg>
+<p class="text-gray-600">Interactive map showing available properties with pins</p>
+<p class="text-sm text-gray-500 mt-2">Hover over pins to see property previews</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-                            <div class="bg-white rounded-xl shadow-lg p-6">
-                                <h3 class="text-xl font-bold mb-6 text-gray-800">Quick Actions</h3>
-                                <div class="space-y-3">
-                                    <button onclick="openChat('Landlord')" class="w-full wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white py-3 rounded-lg font-medium">
-                                        Message Landlord
-                                    </button>
-                                    <button class="w-full border-2 border-chain-blue text-chain-blue py-3 rounded-lg font-medium hover:bg-chain-blue hover:text-white transition-colors">
-                                        Pay Rent Early
-                                    </button>
-                                    <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
-                                        Request Maintenance
-                                    </button>
-                                    <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
-                                        View Lease Agreement
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Verification Section -->
+<section id="verification" class="section-content hidden">
+<div class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Identity Verification</h2>
 
-        <!-- Authentication Section -->
-        <section id="auth" class="section-content hidden">
-            <div class="py-20 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8">
-                        <div class="text-center mb-8">
-                            <svg width="60" height="60" viewBox="0 0 60 60" class="mx-auto mb-4">
-                                <defs>
-                                    <linearGradient id="authLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#2563eb"/>
-                                        <stop offset="100%" style="stop-color:#10b981"/>
-                                    </linearGradient>
-                                </defs>
-                                <!-- House -->
-                                <path d="M30 11.25 L18.75 18.75 L18.75 26.25 L41.25 26.25 L41.25 18.75 Z" fill="url(#authLogoGradient)"/>
-                                <rect x="22.5" y="26.25" width="15" height="15" fill="url(#authLogoGradient)"/>
-                                <rect x="26.25" y="30" width="3" height="6" fill="white"/>
-                                <rect x="31.5" y="30" width="3" height="3" fill="white"/>
-                                <!-- Money symbol -->
-                                <circle cx="15" cy="33.75" r="6" fill="url(#authLogoGradient)"/>
-                                <text x="15" y="37.5" text-anchor="middle" fill="white" font-size="7.5" font-weight="bold">$</text>
-                                <!-- Chain links -->
-                                <ellipse cx="45" cy="30" rx="3" ry="4.5" fill="none" stroke="url(#authLogoGradient)" stroke-width="1.5"/>
-                                <ellipse cx="45" cy="37.5" rx="3" ry="4.5" fill="none" stroke="url(#authLogoGradient)" stroke-width="1.5"/>
-                            </svg>
-                            <h2 class="text-3xl font-bold bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Welcome to RentChain</h2>
-                            <p class="text-gray-600 mt-2">Sign in to your account or create a new one</p>
-                        </div>
+<div class="max-w-4xl mx-auto">
+<!-- User Type Selection -->
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Select Your Role</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<button onclick="selectUserType('tenant')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+<svg width="32" height="32" fill="white" viewBox="0 0 20 20">
+<path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+</svg>
+</div>
+<h4 class="text-lg font-semibold mb-2">Tenant</h4>
+<p class="text-gray-600 text-sm">Looking for a place to rent</p>
+</button>
 
-                        <div class="space-y-4 mb-6">
-                            <button class="w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all">
-                                Continue with Email
-                            </button>
-                            <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
-                                Continue with Phone
-                            </button>
-                            <button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
-                                Connect Wallet
-                            </button>
-                        </div>
+<button onclick="selectUserType('landlord')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+<svg width="32" height="32" fill="white" viewBox="0 0 20 20">
+<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+</svg>
+</div>
+<h4 class="text-lg font-semibold mb-2">Landlord</h4>
+<p class="text-gray-600 text-sm">Property owner or manager</p>
+</button>
 
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">
-                                By continuing, you agree to our 
-                                <a href="#" class="text-chain-blue hover:underline">Terms of Service</a> 
-                                and 
-                                <a href="#" class="text-chain-blue hover:underline">Privacy Policy</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<button onclick="selectUserType('buyer')" class="user-type-btn p-6 border-2 border-gray-200 rounded-xl hover:border-chain-blue transition-colors text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
+<svg width="32" height="32" fill="white" viewBox="0 0 20 20">
+<path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
+</svg>
+</div>
+<h4 class="text-lg font-semibold mb-2">Buyer/Seller</h4>
+<p class="text-gray-600 text-sm">Buying or selling property</p>
+</button>
+</div>
+</div>
 
-    <!-- AI Chatbot -->
-    <div id="chatbot" class="fixed bottom-6 right-6 z-50">
-        <button onclick="toggleChat()" class="chat-bubble w-16 h-16 bg-gradient-to-r from-chain-blue to-chain-green rounded-full shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"/>
-            </svg>
-        </button>
-        
-        <div id="chatWindow" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border overflow-hidden">
-            <div class="bg-gradient-to-r from-chain-blue to-chain-green p-4 text-white">
-                <h3 class="font-semibold">RentChain Assistant</h3>
-                <p class="text-sm opacity-90">How can I help you today?</p>
-            </div>
-            
-            <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3">
-                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
-                    <p class="text-sm">Hello! I'm your RentChain assistant. I can help you with:</p>
-                    <div class="mt-2 space-y-1 text-xs">
-                        <button onclick="sendQuickReply('Search Property')" class="block w-full text-left text-chain-blue hover:underline">• Search for properties</button>
-                        <button onclick="sendQuickReply('Draft Agreement')" class="block w-full text-left text-chain-blue hover:underline">• Draft rental agreements</button>
-                        <button onclick="sendQuickReply('Estimate Rent')" class="block w-full text-left text-chain-blue hover:underline">• Estimate rental prices</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="p-4 border-t">
-                <div class="flex space-x-2">
-                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-chain-blue">
-                    <button onclick="sendMessage()" class="bg-gradient-to-r from-chain-blue to-chain-green text-white px-4 py-2 rounded-lg text-sm font-medium">
-                        Send
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Verification Steps -->
+<div id="verificationSteps" class="hidden">
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<div class="flex items-center mb-8">
+<div class="flex items-center space-x-4">
+<div class="w-8 h-8 bg-chain-blue text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+<span class="text-gray-400">→</span>
+<div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+<span class="text-gray-400">→</span>
+<div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+</div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-chain-dark text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <svg width="32" height="32" viewBox="0 0 32 32">
-                            <defs>
-                                <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#2563eb"/>
-                                    <stop offset="100%" style="stop-color:#10b981"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- House -->
-                            <path d="M16 6 L10 10 L10 14 L22 14 L22 10 Z" fill="url(#footerLogoGradient)"/>
-                            <rect x="12" y="14" width="8" height="8" fill="url(#footerLogoGradient)"/>
-                            <rect x="14" y="16" width="1.5" height="3" fill="white"/>
-                            <rect x="16.5" y="16" width="1.5" height="1.5" fill="white"/>
-                            <!-- Money symbol -->
-                            <circle cx="8" cy="18" r="3" fill="url(#footerLogoGradient)"/>
-                            <text x="8" y="20" text-anchor="middle" fill="white" font-size="4" font-weight="bold">$</text>
-                            <!-- Chain links -->
-                            <ellipse cx="24" cy="16" rx="1.5" ry="2.25" fill="none" stroke="url(#footerLogoGradient)" stroke-width="0.75"/>
-                            <ellipse cx="24" cy="20" rx="1.5" ry="2.25" fill="none" stroke="url(#footerLogoGradient)" stroke-width="0.75"/>
-                        </svg>
-                        <span class="text-xl font-bold">RentChain</span>
-                    </div>
-                    <p class="text-gray-300 text-sm">Revolutionizing property rental with blockchain technology for a secure and transparent future.</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Platform</h4>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">Properties</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Smart Contracts</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Verification</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Dashboard</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Community Forum</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Report Fraud</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Compliance</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-300 text-sm">&copy; 2024 RentChain. All rights reserved. Powered by blockchain technology.</p>
-            </div>
-        </div>
-    </footer>
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 1: Personal Information</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<input type="text" placeholder="Full Name" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+<input type="email" placeholder="Email Address" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+<input type="tel" placeholder="Phone Number" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+<input type="date" placeholder="Date of Birth" class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+</div>
+<textarea placeholder="Address" rows="3" class="w-full mt-4 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue"></textarea>
+</div>
+
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 2: Document Upload</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-chain-blue transition-colors cursor-pointer">
+<svg width="48" height="48" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-400">
+<path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
+</svg>
+<p class="text-gray-600 mb-2">Government ID (Front)</p>
+<p class="text-sm text-gray-500">Click to upload or drag and drop</p>
+</div>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-chain-blue transition-colors cursor-pointer">
+<svg width="48" height="48" fill="currentColor" viewBox="0 0 20 20" class="mx-auto mb-4 text-gray-400">
+<path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/>
+</svg>
+<p class="text-gray-600 mb-2">Government ID (Back)</p>
+<p class="text-sm text-gray-500">Click to upload or drag and drop</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 3: Biometric Verification</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
+<video id="faceVideo" autoplay playsinline class="w-full h-full object-cover hidden"></video>
+<div id="faceVideoPlaceholder" class="text-gray-500 text-sm p-6 text-center">
+Camera preview will appear here when you start the scan.
+</div>
+</div>
+<canvas id="faceCanvas" class="hidden border rounded-lg w-full"></canvas>
+<p id="biometricStatus" class="text-sm text-gray-600"></p>
+</div>
+<div class="space-y-4">
+<p class="text-gray-600 text-sm">Make sure your face is well lit and fully visible. Remove hats and glasses for best results.</p>
+<div class="flex flex-col gap-3">
+<button id="startFaceScanBtn" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white py-3 rounded-lg font-medium">Start Face Scan</button>
+<button id="captureFaceBtn" class="border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors" disabled>Capture Frame</button>
+<button id="submitBiometricBtn" class="border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-green-600 hover:text-green-600 transition-colors" disabled>Submit for Verification</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="text-center">
+<button onclick="submitVerification()" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-12 py-4 rounded-lg font-semibold text-lg">
+Submit for Verification
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Agreements Section -->
+<section id="agreements" class="section-content hidden">
+<div class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Smart Contracts & Agreements</h2>
+
+<div class="max-w-4xl mx-auto">
+<!-- Progress Bar -->
+<div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-medium text-chain-blue">Agreement Progress</span>
+<span class="text-sm font-medium text-chain-blue">Step 2 of 4</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-gradient-to-r from-chain-blue to-chain-green h-2 rounded-full" style="width: 50%"></div>
+</div>
+</div>
+
+<!-- Step 1: Template Selection -->
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 1: Select Agreement Template</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="border-2 border-chain-blue bg-chain-blue/5 rounded-xl p-6 cursor-pointer">
+<h4 class="text-lg font-semibold mb-2 text-chain-blue">Standard Rental</h4>
+<p class="text-gray-600 text-sm mb-4">Basic rental agreement with standard terms</p>
+<div class="text-xs text-gray-500">
+<p>• Monthly rent payment</p>
+<p>• Security deposit</p>
+<p>• Basic maintenance terms</p>
+</div>
+</div>
+
+<div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-chain-blue transition-colors">
+<h4 class="text-lg font-semibold mb-2 text-gray-800">Furnished Rental</h4>
+<p class="text-gray-600 text-sm mb-4">Agreement for furnished properties</p>
+<div class="text-xs text-gray-500">
+<p>• Furniture inventory</p>
+<p>• Damage protection</p>
+<p>• Utility inclusions</p>
+</div>
+</div>
+
+<div class="border-2 border-gray-200 rounded-xl p-6 cursor-pointer hover:border-chain-blue transition-colors">
+<h4 class="text-lg font-semibold mb-2 text-gray-800">Commercial Lease</h4>
+<p class="text-gray-600 text-sm mb-4">Business property agreements</p>
+<div class="text-xs text-gray-500">
+<p>• Commercial terms</p>
+<p>• Business use clauses</p>
+<p>• Extended duration</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Step 2: Customize Terms -->
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 2: Customize Agreement Terms</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Monthly Rent</label>
+<input type="text" value="$2,500" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Security Deposit</label>
+<input type="text" value="$2,500" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Lease Duration</label>
+<select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+<option>12 months</option>
+<option>6 months</option>
+<option>24 months</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+<input type="date" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue">
+</div>
+</div>
+
+<div class="mt-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Additional Terms</label>
+<textarea rows="4" placeholder="Add any special conditions or terms..." class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue"></textarea>
+</div>
+</div>
+
+<!-- Step 3: Review Agreement -->
+<div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 3: Review Agreement</h3>
+<div class="bg-gray-50 rounded-lg p-6 mb-6">
+<h4 class="font-semibold mb-4 text-gray-800">Agreement Summary</h4>
+<div class="space-y-2 text-sm">
+<div class="flex justify-between">
+<span class="text-gray-600">Property:</span>
+<span class="font-medium">Modern Downtown Apartment</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Monthly Rent:</span>
+<span class="font-medium">$2,500</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Security Deposit:</span>
+<span class="font-medium">$2,500</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Lease Duration:</span>
+<span class="font-medium">12 months</span>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-3 mb-6">
+<input type="checkbox" id="agreeTerms" class="w-4 h-4 text-chain-blue">
+<label for="agreeTerms" class="text-sm text-gray-700">I have read and agree to all terms and conditions</label>
+</div>
+</div>
+
+<!-- Step 4: Digital Signature -->
+<div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+<h3 class="text-2xl font-bold mb-6 text-gray-800">Step 4: Digital Signature</h3>
+<div class="mb-6">
+<div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-chain-blue to-chain-green rounded-full flex items-center justify-center">
+<svg width="48" height="48" fill="white" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+</svg>
+</div>
+<p class="text-gray-600">Click below to sign the agreement with blockchain verification</p>
+</div>
+<button onclick="signAgreement()" class="wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white px-12 py-4 rounded-lg font-semibold text-lg">
+Sign Agreement
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Dashboard Section -->
+<section id="dashboard" class="section-content hidden">
+<div class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Dashboard</h2>
+
+<!-- Dashboard Type Selector -->
+<div class="flex justify-center mb-8">
+<div class="bg-white rounded-lg p-1 shadow-lg">
+<button onclick="showDashboard('tenant')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors bg-chain-blue text-white">Tenant</button>
+<button onclick="showDashboard('landlord')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Landlord</button>
+<button onclick="showDashboard('buyer')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Buyer/Seller</button>
+<button onclick="showDashboard('admin')" class="dashboard-tab px-6 py-2 rounded-md font-medium transition-colors text-gray-600 hover:text-chain-blue">Admin</button>
+</div>
+</div>
+
+<!-- Tenant Dashboard -->
+<div id="tenantDashboard" class="dashboard-content">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-white rounded-xl shadow-lg p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Active Rental</h3>
+<div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+<svg width="20" height="20" fill="white" viewBox="0 0 20 20">
+<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+</svg>
+</div>
+</div>
+<p class="text-2xl font-bold text-gray-800">1</p>
+<p class="text-sm text-gray-600">Downtown Apartment</p>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Next Rent Due</h3>
+<div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center">
+<svg width="20" height="20" fill="white" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/>
+</svg>
+</div>
+</div>
+<p class="text-2xl font-bold text-gray-800">5 days</p>
+<p class="text-sm text-gray-600">$2,500 due Dec 1st</p>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Messages</h3>
+<div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
+<svg width="20" height="20" fill="white" viewBox="0 0 20 20">
+<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+</svg>
+</div>
+</div>
+<p class="text-2xl font-bold text-gray-800">3</p>
+<p class="text-sm text-gray-600">Unread messages</p>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-800">Lease Status</h3>
+<div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
+<svg width="20" height="20" fill="white" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 0a1 1 0 100 2h.01a1 1 0 100-2H9zm2 0a1 1 0 100 2h.01a1 1 0 100-2H11z"/>
+</svg>
+</div>
+</div>
+<p class="text-2xl font-bold text-gray-800">Active</p>
+<p class="text-sm text-gray-600">8 months remaining</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-white rounded-xl shadow-lg p-6">
+<h3 class="text-xl font-bold mb-6 text-gray-800">Recent Activity</h3>
+<div class="space-y-4">
+<div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+<svg width="16" height="16" fill="white" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+</svg>
+</div>
+<div>
+<p class="font-medium text-gray-800">Rent payment processed</p>
+<p class="text-sm text-gray-600">November 2024 - $2,500</p>
+</div>
+</div>
+<div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+<div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+<svg width="16" height="16" fill="white" viewBox="0 0 20 20">
+<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+</svg>
+</div>
+<div>
+<p class="font-medium text-gray-800">Message from landlord</p>
+<p class="text-sm text-gray-600">Maintenance scheduled for next week</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow-lg p-6">
+<h3 class="text-xl font-bold mb-6 text-gray-800">Quick Actions</h3>
+<div class="space-y-3">
+<button onclick="openChat('Landlord')" class="w-full wavy-btn bg-gradient-to-r from-chain-blue to-chain-green text-white py-3 rounded-lg font-medium">
+Message Landlord
+</button>
+<button class="w-full border-2 border-chain-blue text-chain-blue py-3 rounded-lg font-medium hover:bg-chain-blue hover:text-white transition-colors">
+Pay Rent Early
+</button>
+<button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
+Request Maintenance
+</button>
+<button class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
+View Lease Agreement
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Authentication Section -->
+<section id="auth" class="section-content hidden">
+<div class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8">
+<div class="text-center mb-8">
+<svg width="60" height="60" viewBox="0 0 60 60" class="mx-auto mb-4">
+<defs>
+<linearGradient id="authLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2563eb"/>
+<stop offset="100%" style="stop-color:#10b981"/>
+</linearGradient>
+</defs>
+<!-- House -->
+<path d="M30 11.25 L18.75 18.75 L18.75 26.25 L41.25 26.25 L41.25 18.75 Z" fill="url(#authLogoGradient)"/>
+<rect x="22.5" y="26.25" width="15" height="15" fill="url(#authLogoGradient)"/>
+<rect x="26.25" y="30" width="3" height="6" fill="white"/>
+<rect x="31.5" y="30" width="3" height="3" fill="white"/>
+<!-- Money symbol -->
+<circle cx="15" cy="33.75" r="6" fill="url(#authLogoGradient)"/>
+<text x="15" y="37.5" text-anchor="middle" fill="white" font-size="7.5" font-weight="bold">$</text>
+<!-- Chain links -->
+<ellipse cx="45" cy="30" rx="3" ry="4.5" fill="none" stroke="url(#authLogoGradient)" stroke-width="1.5"/>
+<ellipse cx="45" cy="37.5" rx="3" ry="4.5" fill="none" stroke="url(#authLogoGradient)" stroke-width="1.5"/>
+</svg>
+<h2 class="text-3xl font-bold bg-gradient-to-r from-chain-blue to-chain-green bg-clip-text text-transparent">Welcome to RentChain</h2>
+<p class="text-gray-600 mt-2">Sign in to your account or create a new one</p>
+</div>
+
+<div class="space-y-4 mb-6">
+<button id="btnEmail" class="w-full bg-gradient-to-r from-chain-blue to-chain-green text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all">
+Continue with Email
+</button>
+<div id="emailForm" class="hidden space-y-3">
+<input id="emailInput" type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue" />
+<button id="emailSubmit" class="w-full wavy-btn bg-chain-blue text-white py-3 rounded-lg font-medium">Send Magic Link</button>
+</div>
+<button id="btnPhone" class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
+Continue with Phone
+</button>
+<div id="phoneForm" class="hidden space-y-3">
+<input id="phoneInput" type="tel" placeholder="e.g. +11234567890" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue" />
+<button id="phoneSubmit" class="w-full wavy-btn bg-chain-blue text-white py-3 rounded-lg font-medium">Send OTP</button>
+<div id="otpForm" class="hidden space-y-3">
+<input id="otpInput" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Enter 6-digit code" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-chain-blue" />
+<div class="flex items-center gap-3">
+<button id="otpVerify" class="flex-1 wavy-btn bg-chain-blue text-white py-3 rounded-lg font-medium">Verify OTP</button>
+<button id="otpResend" class="flex-1 border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">Resend</button>
+</div>
+<p id="otpTimer" class="text-xs text-gray-500"></p>
+</div>
+</div>
+<button id="btnWallet" class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:border-chain-blue hover:text-chain-blue transition-colors">
+Connect Wallet
+</button>
+</div>
+
+<div id="authMessage" class="text-center text-sm text-gray-600"></div>
+
+<div class="text-center">
+<p class="text-sm text-gray-600">
+By continuing, you agree to our
+<a href="#" class="text-chain-blue hover:underline">Terms of Service</a>
+and
+<a href="#" class="text-chain-blue hover:underline">Privacy Policy</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- AI Chatbot -->
+<div id="chatbot" class="fixed bottom-6 right-6 z-50">
+<button onclick="toggleChat()" class="chat-bubble w-16 h-16 bg-gradient-to-r from-chain-blue to-chain-green rounded-full shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all">
+<svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+<path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"/>
+</svg>
+</button>
+
+<div id="chatWindow" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border overflow-hidden">
+<div class="bg-gradient-to-r from-chain-blue to-chain-green p-4 text-white">
+<h3 class="font-semibold">RentChain Assistant</h3>
+<p class="text-sm opacity-90">How can I help you today?</p>
+</div>
+
+<div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3">
+<div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+<p class="text-sm">Hello! I'm your RentChain assistant. I can help you with:</p>
+<div class="mt-2 space-y-1 text-xs">
+<button onclick="sendQuickReply('Search Property')" class="block w-full text-left text-chain-blue hover:underline">• Search for properties</button>
+<button onclick="sendQuickReply('Draft Agreement')" class="block w-full text-left text-chain-blue hover:underline">• Draft rental agreements</button>
+<button onclick="sendQuickReply('Estimate Rent')" class="block w-full text-left text-chain-blue hover:underline">• Estimate rental prices</button>
+</div>
+</div>
+</div>
+
+<div class="p-4 border-t">
+<div class="flex space-x-2">
+<input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-chain-blue">
+<button onclick="sendMessage()" class="bg-gradient-to-r from-chain-blue to-chain-green text-white px-4 py-2 rounded-lg text-sm font-medium">
+Send
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-chain-dark text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center space-x-2 mb-4">
+<svg width="32" height="32" viewBox="0 0 32 32">
+<defs>
+<linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2563eb"/>
+<stop offset="100%" style="stop-color:#10b981"/>
+</linearGradient>
+</defs>
+<!-- House -->
+<path d="M16 6 L10 10 L10 14 L22 14 L22 10 Z" fill="url(#footerLogoGradient)"/>
+<rect x="12" y="14" width="8" height="8" fill="url(#footerLogoGradient)"/>
+<rect x="14" y="16" width="1.5" height="3" fill="white"/>
+<rect x="16.5" y="16" width="1.5" height="1.5" fill="white"/>
+<!-- Money symbol -->
+<circle cx="8" cy="18" r="3" fill="url(#footerLogoGradient)"/>
+<text x="8" y="20" text-anchor="middle" fill="white" font-size="4" font-weight="bold">$</text>
+<!-- Chain links -->
+<ellipse cx="24" cy="16" rx="1.5" ry="2.25" fill="none" stroke="url(#footerLogoGradient)" stroke-width="0.75"/>
+<ellipse cx="24" cy="20" rx="1.5" ry="2.25" fill="none" stroke="url(#footerLogoGradient)" stroke-width="0.75"/>
+</svg>
+<span class="text-xl font-bold">RentChain</span>
+</div>
+<p class="text-gray-300 text-sm">Revolutionizing property rental with blockchain technology for a secure and transparent future.</p>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Platform</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a href="#" class="hover:text-white transition-colors">Properties</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Smart Contracts</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Verification</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Dashboard</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Support</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Community Forum</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Report Fraud</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Legal</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Compliance</a></li>
+</ul>
+</div>
+</div>
+
+<div class="border-t border-gray-700 mt-8 pt-8 text-center">
+<p class="text-gray-300 text-sm">&copy; 2024 RentChain. All rights reserved. Powered by blockchain technology.</p>
+</div>
+</div>
+</footer>
+
+
 <script src="script.js"></script>
+<!-- Supabase JS v2 UMD -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Auth wiring -->
+<script src="auth.js"></script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9842d02776e1ffa9',t:'MTc1ODcyMjQ3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
