@@ -1,7 +1,7 @@
 // Supabase Auth wiring for RentChain
 // Fill these with your project details (Project URL and anon public key)
-const SUPABASE_URL = ""; // e.g. https://abcd1234.supabase.co
-const SUPABASE_ANON_KEY = ""; // Public anon key
+const SUPABASE_URL = "https://wybyqdcxbsujfvdnbuhn.supabase.co"; // e.g. https://abcd1234.supabase.co
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5YnlxZGN4YnN1amZ2ZG5idWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzMTY5ODAsImV4cCI6MjA3NDg5Mjk4MH0.LgMUowUY4uEv5UR0ijpjFrY9Zob-c_EHEtnEftP82DE"; // Public anon key
 
 // Create Supabase client (supabase-js v2 UMD exposes `window.supabase`)
 const sb = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
