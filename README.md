@@ -43,7 +43,7 @@ You can view the live frontend here:
 | Layer           | Technology / Tools                |
 |------------------|-------------------------------------|
 | Frontend         | HTML, CSS, JavaScript |
-| Backend          | Node.js (( may be use next.js or express.js) | 
+| Backend          | Node.js ( may be use next.js or express.js) | 
 | Database         | Supabase | 
 | APIs / Integrations | Google Maps API, Payment API |
 | (Optional) Blockchain / Smart Contract Integration | *If implemented or planned* |
