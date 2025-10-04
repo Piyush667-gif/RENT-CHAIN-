@@ -71,7 +71,7 @@ You can view the live frontend here:
    - Agreement terms are encoded, signed, auditable
    - - Immutable ledger for trust & dispute resolution  
 
-Team & Acknowledgements
+##Team & Acknowledgements
 
 Team Innovatrix
 
