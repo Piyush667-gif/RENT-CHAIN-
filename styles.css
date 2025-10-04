@@ -1,4 +1,6 @@
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
             font-family: 'Inter', sans-serif;
@@ -303,4 +305,5 @@
             10% { opacity: 1; }
             90% { opacity: 1; }
             100% { transform: translateY(-100px) translateX(150px) rotate(360deg); opacity: 0; }
+
         }
