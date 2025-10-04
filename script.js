@@ -1,4 +1,4 @@
-// Loading screen
+// Loading screen (MAY BE IT TOOK SOME TIME  WE CAN FIX IT IN FUTUREOR MAKE SOME CHANGES )
 window.addEventListener('load', function() {
     setTimeout(() => {
     document.getElementById('loadingScreen').style.opacity = '0';
@@ -8,17 +8,17 @@ window.addEventListener('load', function() {
     }, 2000);
     });
     
-    // Navigation
+    // Navigation 
     function showSection(sectionId) {
     // Hide all sections
     document.querySelectorAll('.section-content').forEach(section => {
     section.classList.add('hidden');
     });
     
-    // Show selected section
+    // Show selected section ( BY WHCIH ONKLY ELECTED SECTION IS SHOWN)
     document.getElementById(sectionId).classList.remove('hidden');
     
-    // Update nav links
+    // Update nav links 
     document.querySelectorAll('.nav-link').forEach(link => {
     link.classList.remove('text-chain-blue', 'font-semibold');
     link.classList.add('text-gray-700');
@@ -28,14 +28,14 @@ window.addEventListener('load', function() {
     window.scrollTo(0, 0);
     }
     
-    // Dark mode toggle
+    // Dark mode toggle ( TOOGLE SWITCH)
     function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('bg-gray-800');
     navbar.classList.toggle('bg-white/95');
     
-    // Toggle particles
+    // Toggle particles (SEEN IN INTERFACE)
     const lightParticles = document.getElementById('lightParticles');
     const darkParticles = document.getElementById('darkParticles');
     
@@ -47,14 +47,14 @@ window.addEventListener('load', function() {
     darkParticles.classList.add('hidden');
     }
     
-    // Add transition effect
+    // Add transition effect ( TRANSITION EFFECT RENT CHAIN MEI )
     document.body.style.transition = 'all 0.5s ease';
     setTimeout(() => {
     document.body.style.transition = '';
     }, 500);
     }
     
-    // Notifications
+    // Notifications ( WE CAN FIX IT IN FUTURE AT TAHT TIME IT WILL NOT WORK PERFECTLY (MUJHE IDEA DUMMY KA THA REAL TIME KA AAGE MEMBER EDIT KARENGE )
     const NOTIF_KEY = 'rc_notifications';
     
     // Desktop Notifications (Web Notifications API)
@@ -83,11 +83,11 @@ window.addEventListener('load', function() {
     const n = new Notification(title, {
     body,
     icon: iconUrl,
-    // tag avoids stacking duplicates if same tag is used
+    // tag avoids stacking duplicates if same tag is used (ABB FAKE USER ROKNE PADENGE NA)
     tag: 'rentchain-general',
     renotify: false,
     });
-    // Auto-close after 5s on some browsers
+    // Auto-close after 5s on some browsers ( MAY BE TIMER WILL INCREASE OR MAY BE OUR TEAM WORK ON IT )
     setTimeout(() => n.close && n.close(), 5000);
     } catch (e) {
     // ignore
@@ -204,7 +204,7 @@ window.addEventListener('load', function() {
     list.push(item);
     saveNotifications(list);
     updateNotificationBadge();
-    // Toast banner as well
+    // Toast banner as well ( FOR THE NOTIFICATION)
     showNotification(`${title}: ${message}`, type);
     // Desktop notification (if allowed)
     showDesktopNotification(title, message);
@@ -228,7 +228,7 @@ window.addEventListener('load', function() {
     }
     }
     
-    // Click outside to close notifications
+    // Click outside to close notifications 
     document.addEventListener('click', function(event) {
     const dropdown = document.getElementById('notificationDropdown');
     const button = event.target.closest('button');
@@ -237,9 +237,9 @@ window.addEventListener('load', function() {
     }
     });
     
-    // Verification
+    // Verification ( FOR SECURING THE DATA & MAK E SURE NO FAKE PEOPLE COME IN RENT CHAIN WEBSITE)
     function selectUserType(type) {
-    // Remove active state from all buttons
+    // Remove active state from all buttons 
     document.querySelectorAll('.user-type-btn').forEach(btn => {
     btn.classList.remove('border-chain-blue', 'bg-chain-blue/5');
     btn.classList.add('border-gray-200');
@@ -247,7 +247,7 @@ window.addEventListener('load', function() {
     // Add active state to selected button
     event.target.closest('.user-type-btn').classList.add('border-chain-blue', 'bg-chain-blue/5');
     event.target.closest('.user-type-btn').classList.remove('border-gray-200');
-    // Show verification steps
+    // Show verification steps (  WITH SECURE FACE SCANNING)
     document.getElementById('verificationSteps').classList.remove('hidden');
     // Store selected type
     window.selectedUserType = type;
@@ -276,7 +276,7 @@ window.addEventListener('load', function() {
     event.target.classList.remove('text-gray-600');
     }
     
-    // Chat
+    // Chat 
     function toggleChat() {
     const chatWindow = document.getElementById('chatWindow');
     chatWindow.classList.toggle('hidden');
@@ -587,4 +587,5 @@ window.addEventListener('load', function() {
     saveJobs(jobs);
     scheduleJobTimer(job);
     };
+
     
