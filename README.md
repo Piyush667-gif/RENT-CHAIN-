@@ -57,7 +57,7 @@ You can view the live frontend here:
    - UI components with animations for a smooth UX  
 
 2. Backend (Node.js)  
-   - REST / GraphQL endpoints to support frontend: user registration, property CRUD, agreement generation, payments, etc.  
+   -  Endpoints to support frontend: user registration, property CRUD, agreement generation, payments, etc.  
   
 
 3. Database (Supabase)  
