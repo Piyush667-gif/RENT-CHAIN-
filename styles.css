@@ -1,11 +1,11 @@
-
+/* ALL THE DESIGN ARE REAL , MAY BE API WILL NOT WORK IT IS GET FROM A  GOOGLE*/
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
             font-family: 'Inter', sans-serif;
         }
-
+/* BY CONTRIBUTING IN SO MUCH PROJECT AND MAKING PROJECT I GET THIS IDEA*/
         .animated-bg {
             background: linear-gradient(-45deg, #2563eb, #10b981, #3b82f6, #06d6a0);
             background-size: 400% 400%;
@@ -216,7 +216,7 @@
             border-color: rgba(16, 185, 129, 0.3) !important;
             color: #e2e8f0 !important;
         }
-
+/* FROM GSSOC I SAW ONE PROJECT FROM BY WHICH I GET IDEA TO MAKE THIS TYPE OF INTERFCE FOR ARK MODE */
         .dark-mode input:focus, .dark-mode select:focus, .dark-mode textarea:focus {
             border-color: #10b981 !important;
             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
@@ -307,3 +307,4 @@
             100% { transform: translateY(-100px) translateX(150px) rotate(360deg); opacity: 0; }
 
         }
+
