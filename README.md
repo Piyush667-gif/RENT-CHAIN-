@@ -77,13 +77,13 @@ Team Innovatrix
 
 1.Aaleesha Shawney - Team Leader
 
-2.Piyush Pnadey - Member
+2.Piyush Pnadey - Team Member
 
-3.Avinash Katre - Member 
+3.Avinash Katre - Team Member 
 
-4.Barsan - Member 
+4.Barsan - Team Member 
 
-5.Chetan Amne -Member
+5.Chetan Amne - Team Member
 
 
    
